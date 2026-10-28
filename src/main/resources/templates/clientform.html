@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Form</title>
+    <link rel="stylesheet" href="clientform.css"/>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#Main Menu">Main Menu</a>
+            <a href="#Main Menu">Logout</a>
+        </nav>
+    </header>
+    <br>
+    <section>
+    <form method="post" action="/client/add" th:object="${client}">
+        <fieldset>
+            <legend>Client Input Form</legend>
+            <p><label>Date and Time: </label><input type="datetime-local" th:field="*{submission}"/></p>
+            <p><label>Facility: </label><input type="radio" name="facility" value="SCC" th:field="*{facility}"/>Scranton Counseling Center
+                <input type="radio" name="facility" value="CMC" th:field="*{facility}"/>Geisinger Community Medical Center</p>
+            <p><label>Crisis worker: </label><input type="text" placeholder="Input Name" th:field="*{crisisworker}"/></p>
+            <p><label>Client name: </label><input type="text" placeholder="First Name" th:field="*{fname}"/><input type="text" placeholder="Last Name" th:field="*{lname}"/></p>
+            <p><label>Date of Birth or Age: </label><input type="text" placeholder="mm/dd/yyyy or age"/></p>
+            <p><label>Sex: </label><input type="radio" name="sex" value="Male" th:field="*{sex}"/>Male <input type="radio" name="sex" value="Female" th:field="*{sex}"/>Female</p>
+            <p><label>Jurisdiction: </label><input type="radio" name="county" value="Lackawanna" th:field="*{jurisdiction}"/>Lackawanna
+                <input type="radio" name="county" value="Susquehanna" th:field="*{jurisdiction}"/>Susquehanna</p>
+            <p><label>Ideation: </label><select name="ideationtype" th:field="*{ideation}">
+                <option value="none">None</option>
+                <option value="suicidal">Suicidal</option>
+                <option value="homicidal">Homicidal</option>
+            </select></p>
+            <p><label>With plan? </label><select name="plan" th:field="*{actionable}">
+                <option value="na">N/A</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select></p>
+            <p><label for="notes">Notes: </label><br>
+                <textarea id="notes" rows="5" cols="40" placeholder="Type your notes here..." th:field="*{notes}"></textarea>
+            </p>
+            <p><label>Final Determination: </label><input type="radio" name="determination" value="true" th:field="*{determination}"/>Approved
+                <input type="radio" name="determination" value="false" th:field="*{determination}"/>Not Approved</p>
+            <p><button type="submit">Save Client</button> <button type="reset">Clear Form</button></p>
+        </fieldset>
+        </form>
+        </section>
+</body>
+</html>
