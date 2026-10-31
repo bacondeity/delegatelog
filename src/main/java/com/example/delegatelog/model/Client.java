@@ -9,8 +9,7 @@ public class Client {
    private String crisisworker;
    private String fname;
    private String lname;
-   private LocalDate dob;
-   private int age = -1;
+   private int age;
    private String sex;
    private String jurisdiction;
    private String facility;
@@ -22,7 +21,7 @@ public class Client {
    public Client() {
    }
 
-   public Client(LocalDateTime submission, int id, String crisisworker, String fname, String lname, int age, String sex, String dob,
+   public Client(LocalDateTime submission, int id, String crisisworker, String fname, String lname, int age, String sex,
                  String jurisdiction, String facility,
                  String ideation, String actionable, boolean determination){
 
@@ -38,13 +37,6 @@ public class Client {
       this.ideation = ideation;
       this.actionable = actionable;
       this.determination = determination;
-
-      if(dob != null && !dob.isEmpty()) {
-         this.dob = LocalDate.parse(dob);
-      }
-      if(dob != null){
-         this.age = Period.between(this.dob, LocalDate.now()).getYears();
-      }
    }
 
    public LocalDateTime getSubmission() {
@@ -85,14 +77,6 @@ public class Client {
 
    public void setLname(String lname) {
       this.lname = lname;
-   }
-
-   public LocalDate getDob() {
-      return dob;
-   }
-
-   public void setDob(LocalDate dob) {
-      this.dob = dob;
    }
 
    public int getAge() {
