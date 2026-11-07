@@ -13,7 +13,7 @@
 </header>
 <br>
 <section>
-    <form method="post" action="/user/add" th:object="${user}"/>
+    <form method="post" action="/user/add" th:object="${user}">
     <fieldset>
         <legend>Delegate Registration Form</legend>
         <p><label>Delegate name: </label><input type="text" placeholder="First Name" th:field="*{ufname}"/><input type="text" placeholder="Last Name" th:field="*{ulname}"/></p>
@@ -21,6 +21,7 @@
         <p><label>Set password: </label><input type="password" th:field="*{pw}"/></p>
         <p><button type="submit">Save Delegate</button> <button type="reset">Clear Form</button></p>
     </fieldset>
+    </form>
 </section>
 </body>
 </html>

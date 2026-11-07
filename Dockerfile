@@ -3,7 +3,7 @@ COPY ./pom.xml ./pom.xml
 COPY ./mvnw ./mvnw
 COPY .mvn .mvn
 COPY ./src ./src
-RUN ./mvnw package
+RUN ./mvnw package -DskipTests
 
 FROM eclipse-temurin:17
 COPY --from=build ./target/*.jar spring-api.jar

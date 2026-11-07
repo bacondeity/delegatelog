@@ -1,7 +1,16 @@
 package com.example.delegatelog.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "users")
 
 public class User {
-    private int id;
+    @Id
+    @GeneratedValue
+    private long id;
     private String ufname;
     private String ulname;
     private String email;
@@ -10,7 +19,7 @@ public class User {
     public User(){
     }
 
-    public User(int id, String ufname, String ulname, String email, String pw){
+    public User(long id, String ufname, String ulname, String email, String pw){
         this.id = id;
         this.ufname = ufname;
         this.ulname = ulname;
@@ -18,11 +27,11 @@ public class User {
         this.pw = pw;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

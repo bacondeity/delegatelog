@@ -1,11 +1,21 @@
 package com.example.delegatelog.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.time.Period;
 
+@Entity
+@Table(name = "clients")
+
 public class Client {
    private LocalDateTime submission;
-   private int id;
+   @Id
+   @GeneratedValue
+   private long id;
    private String crisisworker;
    private String fname;
    private String lname;
@@ -21,7 +31,7 @@ public class Client {
    public Client() {
    }
 
-   public Client(LocalDateTime submission, int id, String crisisworker, String fname, String lname, int age, String sex,
+   public Client(LocalDateTime submission, long id, String crisisworker, String fname, String lname, int age, String sex,
                  String jurisdiction, String facility,
                  String ideation, String actionable, boolean determination){
 
@@ -47,11 +57,11 @@ public class Client {
       this.submission = submission;
    }
 
-   public int getId() {
+   public long getId() {
       return id;
    }
 
-   public void setId(int id) {
+   public void setId(long id) {
       this.id = id;
    }
 
