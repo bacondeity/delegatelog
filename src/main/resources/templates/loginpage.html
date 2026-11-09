@@ -8,13 +8,16 @@
 <body>
 
 <section>
-    <form method="post" action="http://localhost:8080"/>
-    <fieldset>
-        <legend>Login:</legend>
-        <p><label>E-mail: </label><input type="text" placeholder="First Name"/><input type="text" placeholder="Last Name"/></p>
-        <p><label>Password: </label><input type="password"/></p>
-        <p><input type="submit" text="Login"/> <button type="button">Register User</button>
-    </fieldset>
+    <h1>Login</h1>
+    <p th:if="${param.error}">Invalid Username/Password</p>
+    <p th:if="${param.logout}">You have been logged out</p>
+    <form th:action="@{/login}" method="post">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" required/>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" required/>
+        <button type="submit">Login</button>
+    </form>
 </section>
 </body>
 </html>
