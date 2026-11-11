@@ -24,4 +24,8 @@ public class ClientService {
     public ClientService(ClientRepository clientRepository){
         this.clientRepository = clientRepository;
     }
+
+    public Client getClientById(long id){
+        return clientRepository.findById(id).orElse(null);
+    }
 }

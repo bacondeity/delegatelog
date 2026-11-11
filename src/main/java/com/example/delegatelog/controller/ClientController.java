@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -40,5 +41,16 @@ public class ClientController {
         List<Client> clients = service.getAllClients();
         model.addAttribute("clients", clients);
         return "clients";
+    }
+
+    @GetMapping("/client/{id}")
+    public String viewClient(@PathVariable long id, Model model){
+        Client client = service.getClientById(id);
+        model.addAttribute("client", client);
+        if (client == null){
+            return "redirect:/clients";
+        }
+        model.addAttribute("clients", client);
+        return "clientdetails";
     }
 }
