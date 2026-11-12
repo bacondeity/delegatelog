@@ -8,7 +8,12 @@
     <h1>Client List</h1>
 
     <div th:each="client: ${clients}">
-        <p th:text="${client.fname}"></p>
+        <p>
+        <span th:text="${client.fname}"></span>
+        <span th:text="${client.lname}"></span>
+
+            <a th:href="@{client/{id}(id=${client.id})}">View Details</a>
+        </p>
     </div>
 
 </body>

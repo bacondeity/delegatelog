@@ -3,10 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
 import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.time.Period;
 
 @Entity
 @Table(name = "clients")
@@ -19,7 +16,7 @@ public class Client {
    private String crisisworker;
    private String fname;
    private String lname;
-   private int age;
+   private Integer age;
    private String sex;
    private String jurisdiction;
    private String facility;
@@ -89,11 +86,11 @@ public class Client {
       this.lname = lname;
    }
 
-   public int getAge() {
+   public Integer getAge() {
       return age;
    }
 
-   public void setAge(int age) {
+   public void setAge(Integer age) {
       this.age = age;
    }
 

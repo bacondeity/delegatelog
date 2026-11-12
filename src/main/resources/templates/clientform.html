@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Client Form</title>
@@ -7,6 +7,7 @@
 </head>
 <body>
     <header>
+        <h1 th:text="${pageTitle}">Client Form</h1>
         <nav>
             <a href="#Main Menu">Main Menu</a>
             <form th:action="@{/logout}" method="post"><button type="submit">Logout</button></form>
@@ -14,20 +15,22 @@
     </header>
     <br>
     <section>
-    <form method="post" action="/client/add" th:object="${client}">
+        <form method="post" th:action="@{${formAction}}" th:object="${client}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
         <fieldset>
-            <legend>Client Input Form</legend>
+            <legend th:text="${pageTitle}">Client Input Form</legend>
             <p><label>Date and Time: </label><input type="datetime-local" th:field="*{submission}"/></p>
             <p><label>Facility: </label><input type="radio" name="facility" value="SCC" th:field="*{facility}"/>Scranton Counseling Center
                 <input type="radio" name="facility" value="CMC" th:field="*{facility}"/>Geisinger Community Medical Center</p>
             <p><label>Crisis worker: </label><input type="text" placeholder="Input Name" th:field="*{crisisworker}"/></p>
             <p><label>Client name: </label><input type="text" placeholder="First Name" th:field="*{fname}"/><input type="text" placeholder="Last Name" th:field="*{lname}"/></p>
-            <p><label>Date of Birth or Age: </label><input type="text" placeholder="mm/dd/yyyy or age"/></p>
+            <p><label>Age: </label><input type="number" placeholder="Enter Age" th:field="*{age}"/></p>
             <p><label>Sex: </label><input type="radio" name="sex" value="Male" th:field="*{sex}"/>Male <input type="radio" name="sex" value="Female" th:field="*{sex}"/>Female</p>
             <p><label>Jurisdiction: </label><input type="radio" name="county" value="Lackawanna" th:field="*{jurisdiction}"/>Lackawanna
                 <input type="radio" name="county" value="Susquehanna" th:field="*{jurisdiction}"/>Susquehanna</p>
             <p><label>Ideation: </label><select name="ideationtype" th:field="*{ideation}">
                 <option value="none">None</option>
+                <option value="both">Both</option>
                 <option value="suicidal">Suicidal</option>
                 <option value="homicidal">Homicidal</option>
             </select></p>
@@ -41,7 +44,7 @@
             </p>
             <p><label>Final Determination: </label><input type="radio" name="determination" value="true" th:field="*{determination}"/>Approved
                 <input type="radio" name="determination" value="false" th:field="*{determination}"/>Not Approved</p>
-            <p><button type="submit">Save Client</button> <button type="reset">Clear Form</button></p>
+            <p><button type="submit" th:text="${pageTitle == 'Edit Client' ? 'Save Changes' : 'Save Client'}">Save Client</button> <button type="reset">Clear Form</button></p>
         </fieldset>
         </form>
         </section>

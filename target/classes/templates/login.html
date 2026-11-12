@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>com.example.delegatelog.model.Client Form</title>
+    <link rel="stylesheet" href="clientform.css"/>
+</head>
+<body>
+
+<section>
+    <h1>Login</h1>
+    <p th:if="${param.error}">Invalid Username/Password</p>
+    <p th:if="${param.logout}">You have been logged out</p>
+    <form th:action="@{/login}" method="post">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" required/>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" required/>
+        <button type="submit">Login</button>
+    </form>
+</section>
+</body>
+</html>

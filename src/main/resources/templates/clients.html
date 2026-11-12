@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Client List</title>
@@ -12,7 +12,8 @@
         <span th:text="${client.fname}"></span>
         <span th:text="${client.lname}"></span>
 
-            <a th:href="@{client/{id}(id=${client.id})}">View Details</a>
+            <a th:href="@{/client/{id}(id=${client.id})}">View Details</a>
+            <a th:href="@{'/client/edit/' + ${client.id}}">Edit</a>
         </p>
     </div>
 

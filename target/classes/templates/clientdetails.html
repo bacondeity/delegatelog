@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Client Details</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="/clients">Back to Client List</a>
+        </nav>
+    </header>
+
+    <h1>Client Details</h1>
+
+    <section>
+        <h2>
+            <span th:text="${client.fname}"></span>
+            <span th:text="${client.lname}"></span>
+        </h2>
+
+        <p>
+            <strong>Client ID:</strong>
+            <span th:text="${client.id}"></span>
+        </p>
+
+        <p>
+            <strong>Submission Date/Time:</strong>
+            <span th:text="${client.submission}"></span>
+        </p>
+
+        <p>
+            <strong>Crisis Worker:</strong>
+            <span th:text="${client.crisisworker}"></span>
+        </p>
+
+        <p>
+            <strong>Age:</strong>
+            <span th:text="${client.age}"></span>
+        </p>
+
+        <p>
+            <strong>Sex:</strong>
+            <span th:text="${client.sex}"></span>
+        </p>
+
+        <p>
+            <strong>Jurisdiction:</strong>
+            <span th:text="${client.jurisdiction}"></span>
+        </p>
+
+        <p>
+            <strong>Facility:</strong>
+            <span th:text="${client.facility}"></span>
+        </p>
+
+        <p>
+            <strong>Ideation:</strong>
+            <span th:text="${client.ideation}"></span>
+        </p>
+
+        <p>
+            <strong>With plan:</strong>
+            <span th:text="${client.actionable}"></span>
+        </p>
+
+        <p>
+            <strong>Notes:</strong>
+            <span th:text="${client.notes}"></span>
+        </p>
+
+        <p>
+            <strong>Final determination:</strong>
+            <span th:text="${client.determination ? 'Approved' : 'Not Approved'}"></span>
+        </p>
+    </section>
+</body>
+</html>
