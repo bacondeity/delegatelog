@@ -92,4 +92,9 @@ public class ClientController {
 
         return "redirect:/client/" + id;
     }
+
+    @GetMapping("/menu")
+    public String displayMenu(){
+        return "menu";
+    }
 }

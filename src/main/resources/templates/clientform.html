@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Client Form</title>
-    <link rel="stylesheet" href="clientform.css"/>
 </head>
 <body>
     <header>
         <h1 th:text="${pageTitle}">Client Form</h1>
         <nav>
-            <a href="#Main Menu">Main Menu</a>
-            <form th:action="@{/logout}" method="post"><button type="submit">Logout</button></form>
+            <a th:href="@{/menu}">Main Menu</a>
         </nav>
     </header>
     <br>

@@ -5,7 +5,12 @@
     <title>Client List</title>
 </head>
 <body>
-    <h1>Client List</h1>
+    <header>
+        <h1>Client List</h1>
+        <nav>
+            <a th:href="@{/menu}">Main Menu</a>
+        </nav>
+    </header>
 
     <div th:each="client: ${clients}">
         <p>
