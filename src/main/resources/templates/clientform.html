@@ -17,6 +17,7 @@
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
         <fieldset>
             <legend th:text="${pageTitle}">Client Input Form</legend>
+            <p th:if="${#fields.hasErrors('crisisworker')}" th:errors = "*{crisisworker}"></p>
             <p><label>Date and Time: </label><input type="datetime-local" th:field="*{submission}"/></p>
             <p><label>Facility: </label><input type="radio" name="facility" value="SCC" th:field="*{facility}"/>Scranton Counseling Center
                 <input type="radio" name="facility" value="CMC" th:field="*{facility}"/>Geisinger Community Medical Center</p>

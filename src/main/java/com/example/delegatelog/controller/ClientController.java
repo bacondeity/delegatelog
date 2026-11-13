@@ -3,13 +3,11 @@ package com.example.delegatelog.controller;
 
 import com.example.delegatelog.model.Client;
 import com.example.delegatelog.service.ClientService;
-
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,10 +32,15 @@ public class ClientController {
 
     @PostMapping("/client/add")
     public String processClientForm(
-            @ModelAttribute("client") Client client) {
+            @Valid
+            @ModelAttribute("client") Client client, BindingResult result, Model model) {
+        if(result.hasErrors()){
+            model.addAttribute("formAction", "/client/add");
+            model.addAttribute("pageTitle", "Add Client");
+            return "clientform";
+        }
 
         service.addClient(client);
-
         return "redirect:/clients";
     }
 
@@ -96,5 +99,15 @@ public class ClientController {
     @GetMapping("/menu")
     public String displayMenu(){
         return "menu";
+    }
+
+    @PostMapping("/client/search")
+    public String processSearchRequest(
+            @RequestParam String search, Model model
+    ){
+        List<Client> clients = service.findByfname(search);
+        model.asMap().remove("clients");
+        model.addAttribute("clients", clients);
+        return "clients";
     }
 }

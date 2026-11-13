@@ -52,4 +52,8 @@ public class ClientService {
             clientRepository.save(existingClient);
         }
     }
+
+    public List<Client> findByfname(String fname){
+        return clientRepository.findByfname(fname);
+    }
 }

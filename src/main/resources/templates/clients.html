@@ -12,6 +12,10 @@
         </nav>
     </header>
 
+    <form method="post" th:action="@{/client/search}">
+        <input type="search" placeholder="Enter search criteria" name="search"><button type="submit">Search</button>
+    </form>
+
     <div th:each="client: ${clients}">
         <p>
         <span th:text="${client.fname}"></span>

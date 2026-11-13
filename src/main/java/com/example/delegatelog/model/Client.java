@@ -3,6 +3,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,6 +15,7 @@ public class Client {
    @Id
    @GeneratedValue
    private long id;
+   @NotBlank(message = "Crisis worker cannot be blank")
    private String crisisworker;
    private String fname;
    private String lname;
