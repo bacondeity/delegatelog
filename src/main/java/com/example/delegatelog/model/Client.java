@@ -4,6 +4,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
 
 import java.time.LocalDateTime;
 
@@ -11,16 +14,20 @@ import java.time.LocalDateTime;
 @Table(name = "clients")
 
 public class Client {
+   @NotNull(message = "Date/time of call must be logged")
    private LocalDateTime submission;
    @Id
    @GeneratedValue
    private long id;
-   @NotBlank(message = "Crisis worker cannot be blank")
    private String crisisworker;
    private String fname;
    private String lname;
+   @NotNull(message = "A valid age is required")
+   @Min(value = 0, message = "Age cannot be negative")
+   @Max(value = 120, message = "Please enter a valid age")
    private Integer age;
    private String sex;
+   @NotBlank(message = "You must select a valid jurisdiction")
    private String jurisdiction;
    private String facility;
    private String notes;

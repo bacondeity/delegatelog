@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    List<Client> findByfname(String fname);
+    List<Client> findByFnameContainingIgnoreCaseOrLnameContainingIgnoreCaseOrCrisisworkerContainingIgnoreCase(
+            String fname, String lname, String crisisworker);
 }

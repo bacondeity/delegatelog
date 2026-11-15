@@ -53,7 +53,8 @@ public class ClientService {
         }
     }
 
-    public List<Client> findByfname(String fname){
-        return clientRepository.findByfname(fname);
+    public List<Client> searchClients(String search) {
+        return clientRepository.findByFnameContainingIgnoreCaseOrLnameContainingIgnoreCaseOrCrisisworkerContainingIgnoreCase(
+                        search, search, search);
     }
 }

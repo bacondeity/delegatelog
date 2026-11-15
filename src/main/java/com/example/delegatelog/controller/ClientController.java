@@ -50,6 +50,7 @@ public class ClientController {
         List<Client> clients = service.getAllClients();
 
         model.addAttribute("clients", clients);
+        model.addAttribute("searchPerformed", false);
 
         return "clients";
     }
@@ -103,11 +104,13 @@ public class ClientController {
 
     @PostMapping("/client/search")
     public String processSearchRequest(
-            @RequestParam String search, Model model
-    ){
-        List<Client> clients = service.findByfname(search);
-        model.asMap().remove("clients");
+            @RequestParam String search, Model model) {
+
+        List<Client> clients = service.searchClients(search);
+
         model.addAttribute("clients", clients);
+        model.addAttribute("searchPerformed", true);
+
         return "clients";
     }
 }
