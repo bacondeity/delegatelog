@@ -1,31 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Client List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DelegateLog - Client List</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-    <header>
-        <h1>Client List</h1>
-        <nav>
-            <a th:href="@{/menu}">Main Menu</a>
-            <a th:if="${searchPerformed}" th:href="@{/clients}">Back to Client List</a>
-        </nav>
-    </header>
 
-    <form method="post" th:action="@{/client/search}">
-        <input type="search" placeholder="Enter search criteria" name="search"><button type="submit">Search</button>
+<header>
+    <h1>DelegateLog</h1>
+
+    <nav>
+        <a th:href="@{/menu}">Main Menu</a>
+
+        <a th:if="${searchPerformed}"
+           th:href="@{/clients}">
+            Back to Client List
+        </a>
+
+        <a th:href="@{/client/add}">Add New Client</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>Client List</h1>
+
+    <!-- Search Form -->
+    <form method="post"
+          th:action="@{/client/search}"
+          class="search-form">
+
+        <input type="hidden"
+               th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}">
+
+        <input type="search"
+               name="search"
+               placeholder="Search clients..."
+               aria-label="Search clients">
+
+        <button type="submit">Search</button>
     </form>
 
-    <div th:each="client: ${clients}">
-        <p>
-        <span th:text="${client.fname}"></span>
-        <span th:text="${client.lname}"></span>
+    <!-- Client Table -->
+    <div class="table-container">
 
-            <a th:href="@{/client/{id}(id=${client.id})}">View Details</a>
-            <a th:href="@{'/client/edit/' + ${client.id}}">Edit</a>
-        </p>
+        <table>
+            <thead>
+            <tr>
+                <th>Submission</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Determination</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="client : ${clients}">
+
+                <td th:text="${client.submission}"></td>
+
+                <td th:text="${client.fname}"></td>
+
+                <td th:text="${client.lname}"></td>
+
+                <td th:text="${client.determination ? 'Approved' : 'Disapproved'}"></td>
+
+                <td>
+                    <a th:href="@{/client/{id}(id=${client.id})}">
+                        View
+                    </a>
+
+                    <a th:href="@{/client/edit/{id}(id=${client.id})}">
+                        Edit
+                    </a>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
     </div>
+
+    <!-- No Results Message -->
+    <p class="empty-message"
+       th:if="${#lists.isEmpty(clients)}">
+        No clients found.
+    </p>
+
+</div>
 
 </body>
 </html>

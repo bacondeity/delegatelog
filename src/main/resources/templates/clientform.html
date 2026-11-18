@@ -1,53 +1,305 @@
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Client Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DelegateLog - Client Form</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-    <header>
-        <h1 th:text="${pageTitle}">Client Form</h1>
-        <nav>
-            <a th:href="@{/menu}">Main Menu</a>
-        </nav>
-    </header>
-    <br>
-    <section>
-        <form method="post" th:action="@{${formAction}}" th:object="${client}">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+<header>
+    <h1>DelegateLog</h1>
+
+    <nav>
+        <a th:href="@{/menu}">Main Menu</a>
+        <a th:href="@{/clients}">Client List</a>
+    </nav>
+</header>
+
+<div class="form-container">
+
+    <h1 th:text="${pageTitle}">Client Form</h1>
+
+    <form method="post"
+          th:action="@{${formAction}}"
+          th:object="${client}">
+
+        <input type="hidden"
+               th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}">
+
         <fieldset>
-            <legend th:text="${pageTitle}">Client Input Form</legend>
-            <p class="errormessage" th:if="${#fields.hasErrors('submission')}" th:errors = "*{submission}"></p>
-            <p class="errormessage" th:if="${#fields.hasErrors('age')}" th:errors = "*{age}"></p>
-            <p class="errormessage" th:if="${#fields.hasErrors('jurisdiction')}" th:errors = "*{jurisdiction}"></p>
-            <p><label>Date and Time: </label><input type="datetime-local" th:field="*{submission}"/></p>
-            <p><label>Facility: </label><input type="radio" name="facility" value="SCC" th:field="*{facility}"/>Scranton Counseling Center
-                <input type="radio" name="facility" value="CMC" th:field="*{facility}"/>Geisinger Community Medical Center</p>
-            <p><label>Crisis worker: </label><input type="text" placeholder="Input Name" th:field="*{crisisworker}"/></p>
-            <p><label>Client name: </label><input type="text" placeholder="First Name" th:field="*{fname}"/><input type="text" placeholder="Last Name" th:field="*{lname}"/></p>
-            <p><label>Age: </label><input type="number" placeholder="Enter Age" th:field="*{age}"/></p>
-            <p><label>Sex: </label><input type="radio" name="sex" value="Male" th:field="*{sex}"/>Male <input type="radio" name="sex" value="Female" th:field="*{sex}"/>Female</p>
-            <p><label>Jurisdiction: </label><input type="radio" name="county" value="Lackawanna" th:field="*{jurisdiction}"/>Lackawanna
-                <input type="radio" name="county" value="Susquehanna" th:field="*{jurisdiction}"/>Susquehanna</p>
-            <p><label>Ideation: </label><select name="ideationtype" th:field="*{ideation}">
-                <option value="none">None</option>
-                <option value="both">Both</option>
-                <option value="suicidal">Suicidal</option>
-                <option value="homicidal">Homicidal</option>
-            </select></p>
-            <p><label>With plan? </label><select name="plan" th:field="*{actionable}">
-                <option value="na">N/A</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select></p>
-            <p><label for="notes">Notes: </label><br>
-                <textarea id="notes" rows="5" cols="40" placeholder="Type your notes here..." th:field="*{notes}"></textarea>
-            </p>
-            <p><label>Final Determination: </label><input type="radio" name="determination" value="true" th:field="*{determination}"/>Approved
-                <input type="radio" name="determination" value="false" th:field="*{determination}"/>Not Approved</p>
-            <p><button type="submit" th:text="${pageTitle == 'Edit Client' ? 'Save Changes' : 'Save Client'}">Save Client</button> <button type="reset">Clear Form</button></p>
+
+            <legend>Submission Information</legend>
+
+            <div class="form-group">
+
+                <label for="submission">Date and Time</label>
+
+                <input type="datetime-local"
+                       id="submission"
+                       th:field="*{submission}">
+
+                <p class="errormessage"
+                   th:if="${#fields.hasErrors('submission')}"
+                   th:errors="*{submission}">
+                </p>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Facility</label>
+
+                <div class="radio-group">
+
+                    <label for="facilitySCC">
+                        <input type="radio"
+                               id="facilitySCC"
+                               value="SCC"
+                               th:field="*{facility}">
+                        Scranton Counseling Center
+                    </label>
+
+                    <label for="facilityCMC">
+                        <input type="radio"
+                               id="facilityCMC"
+                               value="CMC"
+                               th:field="*{facility}">
+                        Geisinger Community Medical Center
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="crisisworker">Crisis Worker</label>
+
+                <input type="text"
+                       id="crisisworker"
+                       placeholder="Enter crisis worker name"
+                       th:field="*{crisisworker}">
+
+            </div>
+
         </fieldset>
-        </form>
-        </section>
+
+
+        <fieldset>
+
+            <legend>Client Information</legend>
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="fname">First Name</label>
+
+                    <input type="text"
+                           id="fname"
+                           placeholder="First Name"
+                           th:field="*{fname}">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="lname">Last Name</label>
+
+                    <input type="text"
+                           id="lname"
+                           placeholder="Last Name"
+                           th:field="*{lname}">
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="age">Age</label>
+
+                <input type="number"
+                       id="age"
+                       min="0"
+                       max="120"
+                       placeholder="Enter Age"
+                       th:field="*{age}">
+
+                <p class="errormessage"
+                   th:if="${#fields.hasErrors('age')}"
+                   th:errors="*{age}">
+                </p>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Sex</label>
+
+                <div class="radio-group">
+
+                    <label for="sexMale">
+                        <input type="radio"
+                               id="sexMale"
+                               value="Male"
+                               th:field="*{sex}">
+                        Male
+                    </label>
+
+                    <label for="sexFemale">
+                        <input type="radio"
+                               id="sexFemale"
+                               value="Female"
+                               th:field="*{sex}">
+                        Female
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Jurisdiction</label>
+
+                <div class="radio-group">
+
+                    <label for="jurisdictionLackawanna">
+                        <input type="radio"
+                               id="jurisdictionLackawanna"
+                               value="Lackawanna"
+                               th:field="*{jurisdiction}">
+                        Lackawanna
+                    </label>
+
+                    <label for="jurisdictionSusquehanna">
+                        <input type="radio"
+                               id="jurisdictionSusquehanna"
+                               value="Susquehanna"
+                               th:field="*{jurisdiction}">
+                        Susquehanna
+                    </label>
+
+                </div>
+
+                <p class="errormessage"
+                   th:if="${#fields.hasErrors('jurisdiction')}"
+                   th:errors="*{jurisdiction}">
+                </p>
+
+            </div>
+
+        </fieldset>
+
+
+        <fieldset>
+
+            <legend>Assessment Information</legend>
+
+            <div class="form-group">
+
+                <label for="ideation">Ideation</label>
+
+                <select id="ideation" th:field="*{ideation}">
+
+                    <option value="none">None</option>
+                    <option value="both">Both</option>
+                    <option value="suicidal">Suicidal</option>
+                    <option value="homicidal">Homicidal</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="actionable">With Plan?</label>
+
+                <select id="actionable" th:field="*{actionable}">
+
+                    <option value="na">N/A</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="notes">Notes</label>
+
+                <textarea id="notes"
+                          rows="5"
+                          placeholder="Enter notes here..."
+                          th:field="*{notes}">
+                </textarea>
+
+            </div>
+
+        </fieldset>
+
+
+        <fieldset>
+
+            <legend>Final Determination</legend>
+
+            <div class="form-group">
+
+                <label>Final Determination</label>
+
+                <div class="radio-group">
+
+                    <label for="determinationApproved">
+                        <input type="radio"
+                               id="determinationApproved"
+                               value="true"
+                               th:field="*{determination}">
+                        Approved
+                    </label>
+
+                    <label for="determinationNotApproved">
+                        <input type="radio"
+                               id="determinationNotApproved"
+                               value="false"
+                               th:field="*{determination}">
+                        Not Approved
+                    </label>
+
+                </div>
+
+                <p class="errormessage"
+                   th:if="${#fields.hasErrors('determination')}"
+                   th:errors="*{determination}">
+                </p>
+
+            </div>
+
+        </fieldset>
+
+
+        <!-- Form Buttons -->
+        <div class="form-group">
+
+            <button type="submit"
+                    th:text="${pageTitle == 'Edit Client' ? 'Save Changes' : 'Save Client'}">
+                Save Client
+            </button>
+
+            <button type="reset">
+                Clear Form
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
 </body>
 </html>

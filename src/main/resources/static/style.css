@@ -1,0 +1,417 @@
+
+/* =================================
+   DELEGATELOG - MAIN STYLESHEET
+   ================================= */
+
+/* General page styling */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f4f8;
+    color: #263445;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #16324f;
+    text-align: center;
+    margin: 30px 0;
+    font-size: 30px;
+}
+
+h2 {
+    color: #244766;
+    margin-top: 10px;
+}
+
+/* Header and navigation */
+header {
+    background-color: #16324f;
+    padding: 12px 20px;
+}
+
+header h1 {
+    color: white;
+    margin: 10px 0 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #315b7d;
+}
+
+/* Main content panels */
+.container,
+.form-container,
+.details-container,
+.login-container,
+.menu-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Login page */
+.login-container {
+    max-width: 430px;
+    margin-top: 90px;
+}
+
+.login-container h1 {
+    margin-top: 5px;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Main menu */
+.menu-container {
+    max-width: 650px;
+    text-align: center;
+}
+
+.menu-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.menu-actions a {
+    width: 100%;
+    max-width: 350px;
+}
+
+.menu-actions form {
+    margin: 0;
+}
+
+/* Buttons and button-style links */
+button,
+.button {
+    display: inline-block;
+    background-color: #246bce;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover,
+.button:hover {
+    background-color: #174f9e;
+}
+
+button[type="reset"] {
+    background-color: #64748b;
+}
+
+button[type="reset"]:hover {
+    background-color: #475569;
+}
+
+.button-secondary {
+    background-color: #64748b;
+}
+
+/* Forms */
+form {
+    margin: 15px 0;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #244766;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #bdc9d6;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    background-color: white;
+    color: #263445;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #246bce;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(36, 107, 206, 0.15);
+}
+
+/* Form sections */
+fieldset {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+legend {
+    padding: 0 10px;
+    color: #16324f;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.form-section {
+    margin-bottom: 24px;
+}
+
+.form-section h2 {
+    font-size: 19px;
+    border-bottom: 1px solid #dce3eb;
+    padding-bottom: 8px;
+}
+
+/* Radio buttons and checkboxes */
+.radio-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+}
+
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    font-weight: normal;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #246bce;
+    width: 17px;
+    height: 17px;
+    margin: 0;
+}
+
+/* Two-column form fields */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* Validation messages */
+.errormessage,
+.error {
+    color: #b42318;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.success-message {
+    color: #187044;
+    background-color: #e8f5ed;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Search form */
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.search-form input {
+    flex: 1;
+}
+
+.search-form button {
+    white-space: nowrap;
+}
+
+/* Client list table */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+}
+
+th {
+    background-color: #16324f;
+    color: white;
+    text-align: left;
+    padding: 14px;
+}
+
+td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #dce3eb;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5f8fb;
+}
+
+tbody tr:hover {
+    background-color: #eaf2fb;
+}
+
+td a {
+    color: #1764b0;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* Client details */
+.details-container {
+    max-width: 850px;
+}
+
+.details-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 15px;
+    padding: 12px;
+    border-bottom: 1px solid #e1e7ee;
+}
+
+.detail-label {
+    color: #16324f;
+    font-weight: bold;
+}
+
+.detail-value {
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/* Empty search results */
+.empty-message {
+    text-align: center;
+    color: #64748b;
+    padding: 25px;
+}
+
+/* Keyboard accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #f0ad4e;
+    outline-offset: 3px;
+}
+
+/* Smaller screens */
+@media (max-width: 700px) {
+    .container,
+    .form-container,
+    .details-container,
+    .login-container,
+    .menu-container {
+        width: 95%;
+        padding: 16px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-row {
+        grid-template-columns: 1fr;
+        gap: 3px;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    header {
+        padding: 12px;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        text-align: center;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    fieldset {
+        padding: 12px;
+    }
+}

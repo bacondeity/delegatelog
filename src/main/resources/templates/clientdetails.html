@@ -1,80 +1,95 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Client Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DelegateLog - Client Details</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a th:href="@{/clients}">Back to Client List</a>
-            <a th:href="@{/client/edit/{id}(id=${client.id})}">Edit Client</a>
-        </nav>
-    </header>
+<header>
+
+    <h1>DelegateLog</h1>
+
+    <nav>
+        <a th:href="@{/menu}">Main Menu</a>
+        <a th:href="@{/clients}">Back to Client List</a>
+        <a th:href="@{/client/edit/{id}(id=${client.id})}">
+            Edit Client
+        </a>
+    </nav>
+
+</header>
+
+<div class="details-container">
 
     <h1>Client Details</h1>
 
-    <section>
-        <h2>
-            <span th:text="${client.fname}"></span>
-            <span th:text="${client.lname}"></span>
-        </h2>
+    <h2>
+        <span th:text="${client.fname}"></span>
+        <span th:text="${client.lname}"></span>
+    </h2>
 
-        <p>
-            <strong>Client ID:</strong>
-            <span th:text="${client.id}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Client ID:</span>
+        <span class="detail-value" th:text="${client.id}"></span>
+    </div>
 
-        <p>
-            <strong>Submission Date/Time:</strong>
-            <span th:text="${client.submission}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Submission Date/Time:</span>
+        <span class="detail-value" th:text="${client.submission}"></span>
+    </div>
 
-        <p>
-            <strong>Crisis Worker:</strong>
-            <span th:text="${client.crisisworker}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Crisis Worker:</span>
+        <span class="detail-value" th:text="${client.crisisworker}"></span>
+    </div>
 
-        <p>
-            <strong>Age:</strong>
-            <span th:text="${client.age}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Age:</span>
+        <span class="detail-value" th:text="${client.age}"></span>
+    </div>
 
-        <p>
-            <strong>Sex:</strong>
-            <span th:text="${client.sex}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Sex:</span>
+        <span class="detail-value" th:text="${client.sex}"></span>
+    </div>
 
-        <p>
-            <strong>Jurisdiction:</strong>
-            <span th:text="${client.jurisdiction}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Jurisdiction:</span>
+        <span class="detail-value" th:text="${client.jurisdiction}"></span>
+    </div>
 
-        <p>
-            <strong>Facility:</strong>
-            <span th:text="${client.facility}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Facility:</span>
+        <span class="detail-value" th:text="${client.facility}"></span>
+    </div>
 
-        <p>
-            <strong>Ideation:</strong>
-            <span th:text="${client.ideation}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Ideation:</span>
+        <span class="detail-value" th:text="${client.ideation}"></span>
+    </div>
 
-        <p>
-            <strong>With plan:</strong>
-            <span th:text="${client.actionable}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">With Plan:</span>
+        <span class="detail-value" th:text="${client.actionable}"></span>
+    </div>
 
-        <p>
-            <strong>Notes:</strong>
-            <span th:text="${client.notes}"></span>
-        </p>
+    <div class="detail-row">
+        <span class="detail-label">Notes:</span>
+        <span class="detail-value" th:text="${client.notes}"></span>
+    </div>
 
-        <p>
-            <strong>Final determination:</strong>
-            <span th:text="${client.determination ? 'Approved' : 'Not Approved'}"></span>
-        </p>
-    </section>
+    <div class="detail-row">
+        <span class="detail-label">Final Determination:</span>
+        <span class="detail-value"
+              th:text="${client.determination ? 'Approved' : 'Not Approved'}">
+        </span>
+    </div>
+
+</div>
+
 </body>
 </html>
